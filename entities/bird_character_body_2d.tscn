@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyoqwo8t1un61"]
+
+[ext_resource type="Texture2D" uid="uid://141h6x4lgig2" path="res://sprites/redbird-downflap.png" id="1_sbku4"]
+[ext_resource type="Script" path="res://scripts/bird_character_body_2d.gd" id="1_tvlb6"]
+[ext_resource type="Texture2D" uid="uid://3anbpbqp6dak" path="res://sprites/redbird-midflap.png" id="2_nidvy"]
+[ext_resource type="Texture2D" uid="uid://cjltvyj2dn87v" path="res://sprites/redbird-upflap.png" id="3_p10na"]
+[ext_resource type="Texture2D" uid="uid://cv1nu4wbewnlx" path="res://sprites/redbird-hurted 1.png" id="4_g6227"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ww75c"]
+radius = 12.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjfsv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sbku4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nidvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p10na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_nidvy")
+}],
+"loop": true,
+"name": &"flappy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_g6227")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 14
+script = ExtResource("1_tvlb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ww75c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rjfsv")
+animation = &"flappy"
+autoplay = "flappy"
