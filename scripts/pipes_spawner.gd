@@ -19,7 +19,6 @@ func _on_timer_timeout() -> void:
 
 func _on_game_enter_game_over() -> void:
 	timer.stop()
-	get_tree().call_group("Pipes", "stop")
 
 func _on_game_enter_playing() -> void:
 	spawn_pipe()

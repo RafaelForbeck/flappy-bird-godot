@@ -26,7 +26,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	match status:
 		GameState.TITLE:
-			warmup()
+			title()
 		GameState.PLAYING:
 			playing()
 		GameState.GAMEOVER:
@@ -65,7 +65,7 @@ func go_to_game_over():
 	update_hi_score_label()
 	emit_signal("enter_game_over")
 
-func warmup():
+func title():
 	if Input.is_action_just_pressed("jump"):
 		go_to_playing()
 
